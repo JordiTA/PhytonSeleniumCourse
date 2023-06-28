@@ -52,7 +52,7 @@ print('-------------------------------------') # Separator
 print('-------------------------------------') # Separator
 
 # # Example 6
-# Re-Raise
+# Re-raise
 try:
     a = 5 / 0
 except Exception as e:
