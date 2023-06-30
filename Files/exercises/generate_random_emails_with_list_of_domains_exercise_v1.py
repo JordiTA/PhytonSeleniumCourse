@@ -18,4 +18,26 @@ V1:
 - Output file name: out_generate-random_email_with_list_of_domains_v1.csv
 """
 
+import pdb
+import random
+import string
+
+outputPath = '.\out_generate_random_email_with_list_of_domains_v1.cvs'
+
 list_of_domains = ['supersqa.com', 'gmail.com', 'yahoo.com', 'outlook.com', 'msn.com']
+
+lengthEmail = 5
+letters = string.ascii_lowercase
+
+allEmails =[]
+
+for domain in list_of_domains:
+    for i in range(20):
+        random_string = ''.join(random.choice(letters) for i in range(lengthEmail))
+        email = random_string + '@' + domain
+        allEmails.append(email)
+        print(email)
+
+with open(outputPath, 'w') as file:
+    for email in allEmails:
+        file.write(email + ',\n')
