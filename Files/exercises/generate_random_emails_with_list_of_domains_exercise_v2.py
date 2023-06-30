@@ -21,4 +21,25 @@ for each domain will be unknown.
 ** the difference from V1 is the domains are random for this one.
 """
 
+import pdb
+import random
+import string
+
+outputPath = '.\out_generate_random_email_with_list_of_domains_v2.csv'
+
 list_of_domains = ['supersqa.com', 'gmail.com', 'yahoo.com', 'outlook.com', 'msn.com']
+
+length = 5
+letters = string.ascii_lowercase
+
+allEmails = []
+
+for i in range(100):
+    randomString = ''.join(random.choice(letters) for i in range(length))
+    randomDomain = ''.join(random.choice(list_of_domains))
+    email = randomString + '@' + randomDomain
+    allEmails.append(email)
+
+with open(outputPath, 'w') as file:
+    for email in allEmails:
+        file.write(email + ',\n')
