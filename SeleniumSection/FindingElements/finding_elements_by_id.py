@@ -12,6 +12,8 @@ cart = driver.find_element(By.ID, "site-header-cart")
 cart.click()
 
 driver.get('http:/demostore.supersqa.com/my-account/')
+username = driver.find_element(By.ID, 'username')
+username.send_keys('myusername')
 pdb.set_trace()
 
 # NOTE: to find available methods just do dir(<variable>)
