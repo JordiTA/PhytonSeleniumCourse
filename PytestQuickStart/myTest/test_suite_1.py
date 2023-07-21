@@ -12,6 +12,9 @@ def testLoginPageValidUser():
 @pytest.mark.smoke
 def testLoginWrongPassword():
     print("Login with wrong Password.")
+    assert 1==2, 'failed'
 
 # RUN ONE IN TERMINAL --> pytest -m smoke --> Runs the two functions
 # RUN ONE WITH TWO TAGS IN TERMINAL --> pytest -m "smoke and regression" --> Runs only the second function
+
+# PYTEST-HTML: pytest --html=report.html --self-contained-html --> Report generator
