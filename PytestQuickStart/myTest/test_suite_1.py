@@ -1,5 +1,6 @@
 import pytest
 
+# This marks all the functions in the file:
 pytestmark = [pytest.mark.frontend, pytest.mark.slow]
 
 @pytest.mark.smoke
