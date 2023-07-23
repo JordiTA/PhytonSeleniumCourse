@@ -1,1 +1,4 @@
 venv/*
+PytestQuickStart/myTest/__pycache__/*
+ssqatest/ssqatest/__pycache__/*
+ssqatest/ssqatest/tests/__pycache__/*
