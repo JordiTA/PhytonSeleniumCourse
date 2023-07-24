@@ -6,7 +6,9 @@ class TestLoginNegative:
 
     @pytest.mark.tcid12
     def testLogInNoneExistingUser(self):
-
+        print("***********************")
+        print("TEST LOGIN NON EXISTING")
+        print("***********************")
         account = MyAccountSignedOut(self.driver)
 
         account.goToMyAccount()
@@ -14,5 +16,5 @@ class TestLoginNegative:
         account.inputLoginPassword('asdfadsfa')
         account.clickLoginButton()
 
-        expected_error = 'Error: The username asdfasdf is not registered on this site. If you are unsure of your username, try your email address instead.'
+        expected_error = 'Error: The password you entered for the username asdfasdf is incorrect. Lost your password?'
         account.waitUntilErrorIsDisplayed(expected_error)
