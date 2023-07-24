@@ -1,5 +1,5 @@
-from ssqatest.src.pages.locators import MyAccountSignedOutLocator
-from ssqatest.src import SeleniumExtended
+from ssqatest.src.pages.locators.MyAccountSignedOutLocator import MyAccountSignedOutLocator
+from ssqatest.src.SeleniumExtended import SeleniumExtended
 from ssqatest.src.helpers.configHelpers import getBaseURL
 
 class MyAccountSignedOut(MyAccountSignedOutLocator):
@@ -23,4 +23,7 @@ class MyAccountSignedOut(MyAccountSignedOutLocator):
 
     def clickLoginButton(self):
         self.sl.waitAndClick(self.LOGIN_BUTTON)
+
+    def waitUntilErrorIsDisplayed(self, exp_err):
+        pass
 

@@ -2,3 +2,8 @@ venv/*
 PytestQuickStart/myTest/__pycache__/*
 ssqatest/ssqatest/__pycache__/*
 ssqatest/ssqatest/tests/__pycache__/*
+ssqatest/ssqatest/src/pages/__pycache__/*
+ssqatest/ssqatest/src/pages/locators/__pycache__/*
+ssqatest/ssqatest/src/helpers/__pycache__/*
+ssqatest/ssqatest/src/__pycache__/*
+ssqatest/ssqatest/tests/my_account/__pycache__/*
