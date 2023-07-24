@@ -12,9 +12,10 @@ class TestEndToEndCheckoutGuestUser:
         home_page.goToHomePage()
 
         # ADD 1 ITEM TO CARD
+        home_page.clickFirstAddToCartButton()
 
         # GO TO CART
-
+        
         # APPLY FREE CUPON
 
         # SLECT FREE SHIPPING
