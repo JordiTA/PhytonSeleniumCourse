@@ -1,5 +1,6 @@
 import pytest
 from ssqatest.src.pages.MyAccountSignedOut import MyAccountSignedOut
+from ssqatest.src.helpers.generic_helpers import generateRandomEmailAndPassword
 
 @pytest.mark.usefixtures("init_driver")
 class TestRegisterNewUser:
@@ -9,7 +10,8 @@ class TestRegisterNewUser:
         account = MyAccountSignedOut(self.driver)
         account.goToMyAccount()
 
-        account.inputRegisterEmail('admastest1@supersqa.com')
+        random_email = generateRandomEmailAndPassword()
+        account.inputRegisterEmail(random_email)
         account.inputRegisterPassword('Abcdefg12345!')
         account.clickRegisterButton()
 

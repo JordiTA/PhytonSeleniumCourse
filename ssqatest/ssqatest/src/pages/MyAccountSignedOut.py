@@ -14,7 +14,6 @@ class MyAccountSignedOut(MyAccountSignedOutLocator):
     def goToMyAccount(self):
         baseURL = getBaseURL()
         accountURL = baseURL + self.endpoint
-
         logger.info(f"Going to {accountURL}")
         self.driver.get(accountURL)
 
