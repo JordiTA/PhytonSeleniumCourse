@@ -1,6 +1,7 @@
 import pytest
 from ssqatest.src.pages.HomePage import HomePage
 from ssqatest.src.pages.Header import Header
+from ssqatest.src.pages.CartPage import CartPage
 
 @pytest.mark.usefixtures('init_driver')
 class TestEndToEndCheckoutGuestUser:
@@ -10,6 +11,7 @@ class TestEndToEndCheckoutGuestUser:
 
         home_page = HomePage(self.driver)
         header = Header(self.driver)
+        cart_page = CartPage(self.driver)
 
         # GO TO HOME PAGE
         home_page.goToHomePage()
@@ -22,6 +24,10 @@ class TestEndToEndCheckoutGuestUser:
 
         # GO TO CART
         header.clickOnCart()
+
+        # VERYFY ITEM IN THE CART
+        product_names = cart_page.getAllProductNamesInCart()
+        assert len(product_names) == 1, f"Expected 1 product in cart but found {product_names} products."
 
         # APPLY FREE CUPON
 
