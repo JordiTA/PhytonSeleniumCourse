@@ -1,11 +1,15 @@
 import pytest
+from ssqatest.src.pages.HomePage import HomePage
 
 @pytest.mark.usefixtures('init_driver')
 class TestEndToEndCheckoutGuestUser:
 
+    @pytest.mark.tcid33
     def testEndToEndCheckoutGuestUser(self):
 
         # GO TO HOME PAGE
+        home_page = HomePage(self.driver)
+        home_page.goToHomePage()
 
         # ADD 1 ITEM TO CARD
 
