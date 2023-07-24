@@ -10,12 +10,15 @@ class TestEndToEndCheckoutGuestUser:
 
         home_page = HomePage(self.driver)
         header = Header(self.driver)
-        
+
         # GO TO HOME PAGE
         home_page.goToHomePage()
 
         # ADD 1 ITEM TO CARD
         home_page.clickFirstAddToCartButton()
+
+        # MAKE SURE THE CART IS UPDATED
+        header.waitUntilCartItemCount(1)
 
         # GO TO CART
         header.clickOnCart()

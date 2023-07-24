@@ -9,3 +9,11 @@ class Header(HeaderLocators):
 
     def clickOnCart(self):
         self.sl.waitAndClick(self.CART_RIGHT_HEADER)
+
+    def waitUntilCartItemCount(self, count):
+        if count == 1:
+            expected_text = str(count) +' item'
+        elif count > 1:
+            expected_text = str(count) +' items'
+        
+        self.sl.waitUntilElementContainsText(self.CART_ITEM_COUNT, expected_text)
