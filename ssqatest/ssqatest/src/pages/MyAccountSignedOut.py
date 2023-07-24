@@ -31,3 +31,12 @@ class MyAccountSignedOut(MyAccountSignedOutLocator):
     def waitUntilErrorIsDisplayed(self, exp_err):
         self.sl.waitUntilElementContainsText(self.ERRORS_UL, exp_err)
 
+    def inputRegisterEmail(self, email):
+        self.sl.waitAndInputText(self.REGISTER_EMAIL, email)
+    
+    def inputRegisterPassword(self, password):
+        self.sl.waitAndInputText(self.REGISTER_PASSWORD, password)
+
+    def clickRegisterButton(self):
+        logger.info("Clicking 'REGISTER' button.")
+        self.sl.waitAndClick(self.REGISTER_BUTTON)

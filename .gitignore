@@ -1,2 +1,3 @@
 venv/*
 *.pyc
+ssqatest/ssqatest/geckodriver.log
