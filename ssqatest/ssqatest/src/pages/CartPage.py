@@ -27,3 +27,9 @@ class CartPage(CartPageLocators):
     def getDisplayedMessage(self):
         text = self.sl.waitAndGetText(self.CART_PAGE_MESSAGE)
         return text
+    
+    def clickShippingOption(self):
+        self.sl.waitAndClick(self.SHIPPING_OPTION)
+
+    def clickOnProceedToCheckout(self):
+        self.sl.waitAndClick(self.PROCEED_TO_CHECKOUT_BTN)

@@ -34,9 +34,11 @@ class TestEndToEndCheckoutGuestUser:
         cupon_code = GenericConfigs.FREE_CUPON
         cart_page.applyCuppon(cupon_code)
 
-        # SLECT FREE SHIPPING
+        # SELECT FREE SHIPPING
+        cart_page.clickShippingOption()
 
         # CLICK ON CHECKOUT
+        cart_page.clickOnProceedToCheckout()
 
         # FILL INFORM
 
