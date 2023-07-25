@@ -2,6 +2,7 @@ import pytest
 from ssqatest.src.pages.HomePage import HomePage
 from ssqatest.src.pages.Header import Header
 from ssqatest.src.pages.CartPage import CartPage
+from ssqatest.src.pages.CheckoutPage import CheckoutPage
 from ssqatest.src.configs.generic_configs import GenericConfigs
 
 @pytest.mark.usefixtures('init_driver')
@@ -13,6 +14,7 @@ class TestEndToEndCheckoutGuestUser:
         home_page = HomePage(self.driver)
         header = Header(self.driver)
         cart_page = CartPage(self.driver)
+        checkout_page = CheckoutPage(self.driver)
 
         # GO TO HOME PAGE
         home_page.goToHomePage()
@@ -41,8 +43,10 @@ class TestEndToEndCheckoutGuestUser:
         cart_page.clickOnProceedToCheckout()
 
         # FILL INFORM
+        checkout_page.fillInBillingInfo()
 
         # CLICK ON PLACE ORDER
+        checkout_page.clickPlaceHolder()
 
         # VERIFY ORDER IS RECIEVED
 
