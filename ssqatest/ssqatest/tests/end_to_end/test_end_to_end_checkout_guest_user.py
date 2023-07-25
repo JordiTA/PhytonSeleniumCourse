@@ -54,4 +54,7 @@ class TestEndToEndCheckoutGuestUser:
         order_recieved_page.verifyOrderRecievedPageLoaded()
 
         # VERYFY ORDER IS RECORDED IN DATABASE (via SQL // via API)
-        pass
+        order_number = order_recieved_page.getOrderNumber()
+        print('************')
+        print(order_number)
+        print('************')

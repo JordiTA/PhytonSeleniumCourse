@@ -37,5 +37,5 @@ def init_driver(request):
 
     request.cls.driver = driver
     yield
-    import pdb; pdb.set_trace()
-    # driver.quit()
+    # import pdb; pdb.set_trace()
+    driver.quit()

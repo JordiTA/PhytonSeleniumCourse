@@ -10,3 +10,6 @@ class OrderRecievedPage(OrderRecievedPageLocators):
     def verifyOrderRecievedPageLoaded(self, expected_text=None):
         expected_text = expected_text if expected_text else 'Order received'
         self.sl.waitUntilElementContainsText(self.PAGE_MAIN_HEADER, expected_text)
+
+    def getOrderNumber(self):
+        return self.sl.waitAndGetText(self.ORDER_NUMBER)
