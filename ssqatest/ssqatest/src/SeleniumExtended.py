@@ -24,7 +24,7 @@ class SeleniumExtended:
                 EC.visibility_of_element_located(locator)
             ).click()
         except StaleElementReferenceException:
-            time.sleep(2)
+            time.sleep(1)
             WebDriverWait(self.driver, timeout).until(
                 EC.visibility_of_element_located(locator)
             ).click()
