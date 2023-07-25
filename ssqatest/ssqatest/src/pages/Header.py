@@ -7,7 +7,7 @@ class Header(HeaderLocators):
         self.driver = driver
         self.sl = SeleniumExtended(self.driver)
 
-    def clickOnCart(self):
+    def clickOnCartOnRightHeader(self):
         self.sl.waitAndClick(self.CART_RIGHT_HEADER)
 
     def waitUntilCartItemCount(self, count):

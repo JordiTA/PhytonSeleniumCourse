@@ -43,8 +43,21 @@ class SeleniumExtended:
                                     f"after timeout of {timeout}."
 
         try:
-            WebDriverWait(self.driver,timeout).until(
+            elements = WebDriverWait(self.driver,timeout).until(
                 EC.visibility_of_all_elements_located(locator)
             )
         except TimeoutException:
             raise TimeoutException(error)
+        
+        return elements
+    
+    def waitAndGetText(self, locator, timeout=None):
+        timeout = timeout if timeout else self.default_timeout
+
+        element = WebDriverWait(self.driver, timeout).until(
+            EC.visibility_of_element_located(locator)
+        )
+
+        element_text = element.text
+        return element_text
+
