@@ -1,5 +1,5 @@
 from ssqatest.src.SeleniumExtended import SeleniumExtended
-from ssqatest.src.helpers.configHelpers import getBaseURL
+from ssqatest.src.helpers.config_helpers import getBaseURL
 from ssqatest.src.pages.locators.HomePageLocators import HomePageLocators
 
 class HomePage(HomePageLocators):

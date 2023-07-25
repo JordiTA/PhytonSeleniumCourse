@@ -1,6 +1,6 @@
 from ssqatest.src.pages.locators.MyAccountSignedOutLocator import MyAccountSignedOutLocator
 from ssqatest.src.SeleniumExtended import SeleniumExtended
-from ssqatest.src.helpers.configHelpers import getBaseURL
+from ssqatest.src.helpers.config_helpers import getBaseURL
 import logging as logger
 
 class MyAccountSignedOut(MyAccountSignedOutLocator):
