@@ -38,8 +38,8 @@ class TestEndToEndCheckoutGuestUser:
         cupon_code = GenericConfigs.FREE_CUPON
         cart_page.applyCuppon(cupon_code)
 
-        # SELECT FREE SHIPPING
-        cart_page.clickShippingOption()
+        # SELECT FREE SHIPPING --> NO NEED TO DO THAT WHEN WE WORK IN localhost:8888, only in demostore.
+        # cart_page.clickShippingOption()
 
         # CLICK ON CHECKOUT
         cart_page.clickOnProceedToCheckout()
