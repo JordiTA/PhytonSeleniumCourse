@@ -1,8 +1,9 @@
 import pytest
+import pytest_html
+import os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChOptions
 from selenium.webdriver.firefox.options import Options as FFOptions
-import os
 
 @pytest.fixture(scope="class")
 def init_driver(request):
@@ -39,3 +40,19 @@ def init_driver(request):
     yield
     # import pdb; pdb.set_trace()
     driver.quit()
+
+
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    report = outcome.get_result()
+    extras = getattr(report, "extras", [])
+    if report.when == "call":
+        # always add url to report
+        extras.append(pytest_html.extras.url("http://www.example.com/"))
+        xfail = hasattr(report, "wasxfail")
+        if (report.skipped and xfail) or (report.failed and not xfail):
+            # only add additional html on failure
+            # extras.append(pytest_html.extras.html('<div style="background:orange">Additional HTML</div>'))
+            extras.append(pytest_html.extras.image('file://D:/Udemy/PhytonSeleniumCourse/ssqatest/ssqatest/error_logo.png'))
+        report.extra = extras

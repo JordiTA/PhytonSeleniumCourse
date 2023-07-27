@@ -6,9 +6,11 @@ class TestLoginNegative:
 
     @pytest.mark.tcid12
     def testLogInNoneExistingUser(self):
+        assert 1==2
         print("***********************")
         print("TEST LOGIN NON EXISTING")
         print("***********************")
+        return
         account = MyAccountSignedOut(self.driver)
 
         account.goToMyAccount()
