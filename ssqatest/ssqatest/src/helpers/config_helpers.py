@@ -19,10 +19,10 @@ def getCredentialsDB():
     if not db_user or not db_password:
         raise Exception("Enviroment variables 'DB_USER' & 'DB_PASSWORD' must be set.")
 
-    if env == 'test':
+    if env.lower() == 'test':
         db_host = '127.0.0.1'
         db_port = 8889
-    elif env == 'prod':
+    elif env.lower() == 'prod':
         db_host = 'demostore.supersqa.com'
         db_port = 3306
     else:

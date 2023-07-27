@@ -65,3 +65,7 @@ class TestEndToEndCheckoutGuestUser:
 
         db_order = getOrderByOrderNumberFromDB(order_number)
         assert db_order, f"After creating order with FE, not found in DB. Order number: {order_number}."
+
+        print('************')
+        print('----PASS----')
+        print('************')
