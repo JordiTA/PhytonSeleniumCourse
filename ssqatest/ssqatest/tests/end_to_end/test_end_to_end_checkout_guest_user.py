@@ -5,6 +5,7 @@ from ssqatest.src.pages.CartPage import CartPage
 from ssqatest.src.pages.CheckoutPage import CheckoutPage
 from ssqatest.src.pages.OrderRecievedPage import OrderRecievedPage
 from ssqatest.src.configs.generic_configs import GenericConfigs
+from ssqatest.src.helpers.database_helpers import getOrderByOrderNumberFromDB
 
 @pytest.mark.usefixtures('init_driver')
 class TestEndToEndCheckoutGuestUser:
@@ -53,8 +54,14 @@ class TestEndToEndCheckoutGuestUser:
         # VERIFY ORDER IS RECIEVED
         order_recieved_page.verifyOrderRecievedPageLoaded()
 
+        # WAIT BECAUSE IT DOES NOT WAIT FOR THE QUERY TO BE SEND BY THE WEBSITE, THIS CAUSES AN ERROR
+        header.waitUntilCartItemCount(0)
+
         # VERYFY ORDER IS RECORDED IN DATABASE (via SQL // via API)
         order_number = order_recieved_page.getOrderNumber()
         print('************')
         print(order_number)
         print('************')
+
+        db_order = getOrderByOrderNumberFromDB(order_number)
+        assert db_order, f"After creating order with FE, not found in DB. Order number: {order_number}."

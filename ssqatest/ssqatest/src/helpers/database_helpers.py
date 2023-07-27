@@ -15,3 +15,10 @@ def readFromDB(query):
 
     # RETURN THE RESULT
     return db_data
+
+def getOrderByOrderNumberFromDB(order_number):
+
+    query = f"SELECT * FROM quicksitedb.wp_posts WHERE ID = {order_number} AND post_type = 'shop_order';"
+
+    db_order = readFromDB(query)
+    return db_order

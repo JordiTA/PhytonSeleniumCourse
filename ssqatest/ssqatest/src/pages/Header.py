@@ -13,7 +13,7 @@ class Header(HeaderLocators):
     def waitUntilCartItemCount(self, count):
         if count == 1:
             expected_text = str(count) +' item'
-        elif count > 1:
+        elif count != 1:
             expected_text = str(count) +' items'
         
         self.sl.waitUntilElementContainsText(self.CART_ITEM_COUNT, expected_text)
