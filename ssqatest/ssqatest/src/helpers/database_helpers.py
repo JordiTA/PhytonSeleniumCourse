@@ -1,10 +1,12 @@
 import pymysql
+from ssqatest.src.helpers.config_helpers import getCredentialsDB
 
 def readFromDB(query):
 
+    db_credentials = getCredentialsDB()
     #CONNECT TO DATABASE
-    connection = pymysql.connect(host='127.0.0.1', port=8889,
-                                 user='root', password='root')
+    connection = pymysql.connect(host=db_credentials['db_host'], port=db_credentials['db_port'],
+                                 user=db_credentials['db_user'], password=db_credentials['db_password'])
     try:
         cursor = connection.cursor(pymysql.cursors.DictCursor)
         cursor.execute(query)
