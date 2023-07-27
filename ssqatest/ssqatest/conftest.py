@@ -49,10 +49,11 @@ def pytest_runtest_makereport(item, call):
     extras = getattr(report, "extras", [])
     if report.when == "call":
         # always add url to report
-        extras.append(pytest_html.extras.url("http://www.example.com/"))
         xfail = hasattr(report, "wasxfail")
         if (report.skipped and xfail) or (report.failed and not xfail):
-            # only add additional html on failure
-            # extras.append(pytest_html.extras.html('<div style="background:orange">Additional HTML</div>'))
-            extras.append(pytest_html.extras.image('file://D:/Udemy/PhytonSeleniumCourse/ssqatest/ssqatest/error_logo.png'))
+            is_frontend_test = True if 'init_driver' in item.fixturenames else False
+            if is_frontend_test:
+                # only add additional html on failure
+                # extras.append(pytest_html.extras.html('<div style="background:orange">Additional HTML</div>'))
+                extras.append(pytest_html.extras.image('file://D:/Udemy/PhytonSeleniumCourse/ssqatest/ssqatest/error_logo.png'))
         report.extra = extras
