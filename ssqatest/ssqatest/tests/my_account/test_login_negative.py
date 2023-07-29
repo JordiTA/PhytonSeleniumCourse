@@ -16,5 +16,5 @@ class TestLoginNegative:
         account.inputLoginPassword('asdfadsfa')
         account.clickLoginButton()
 
-        expected_error = 'Error: The username asdfasdf is not registered on this site. If you are unsure of your username, try your email address insteadd.'
+        expected_error = 'Error: The username asdfasdf is not registered on this site. If you are unsure of your username, try your email address instead.'
         account.waitUntilErrorIsDisplayed(expected_error)
