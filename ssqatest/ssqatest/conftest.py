@@ -53,7 +53,17 @@ def pytest_runtest_makereport(item, call):
         if (report.skipped and xfail) or (report.failed and not xfail):
             is_frontend_test = True if 'init_driver' in item.fixturenames else False
             if is_frontend_test:
+                
+                results_dir = os.environ.get("RESULTS_DIR")
+                if not results_dir:
+                    raise Exception("Enviroment variable 'RESULTS_DIR' must be set.")
+                
+                screenshot_path = os.path.join(results_dir, item.name + '.png')
+                
+                driver_fixture = item.funcargs['request']
+                driver_fixture.cls.driver.save_screenshot(screenshot_path)
+                
                 # only add additional html on failure
                 # extras.append(pytest_html.extras.html('<div style="background:orange">Additional HTML</div>'))
-                extras.append(pytest_html.extras.image('file://D:/Udemy/PhytonSeleniumCourse/ssqatest/ssqatest/error_logo.png'))
+                extras.append(pytest_html.extras.image(screenshot_path))
         report.extra = extras
