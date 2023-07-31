@@ -2,3 +2,4 @@ venv/*
 *.pyc
 ssqatest/ssqatest/geckodriver.log
 restAPI.txt
+ssqatest/ssqatest/allure_reports/*

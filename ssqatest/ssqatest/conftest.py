@@ -1,5 +1,6 @@
 import pytest
 import pytest_html
+import allure
 import os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChOptions
@@ -41,7 +42,35 @@ def init_driver(request):
     # import pdb; pdb.set_trace()
     driver.quit()
 
+# ---------------------- GENERATE ONLY PYTEST-HTML REPORTS ----------------------
+# @pytest.hookimpl(hookwrapper=True)
+# def pytest_runtest_makereport(item, call):
+#     outcome = yield
+#     report = outcome.get_result()
+#     extras = getattr(report, "extras", [])
+#     if report.when == "call":
+#         # always add url to report
+#         xfail = hasattr(report, "wasxfail")
+#         if (report.skipped and xfail) or (report.failed and not xfail):
+#             is_frontend_test = True if 'init_driver' in item.fixturenames else False
+#             if is_frontend_test:
+                
+#                 results_dir = os.environ.get("RESULTS_DIR")
+#                 if not results_dir:
+#                     raise Exception("Enviroment variable 'RESULTS_DIR' must be set.")
+                
+#                 screenshot_path = os.path.join(results_dir, item.name + '.png')
+                
+#                 driver_fixture = item.funcargs['request']
+#                 driver_fixture.cls.driver.save_screenshot(screenshot_path)
+                
+#                 # only add additional html on failure
+#                 # extras.append(pytest_html.extras.html('<div style="background:orange">Additional HTML</div>'))
+#                 extras.append(pytest_html.extras.image(screenshot_path))
+#         report.extra = extras
+# -------------------------------------------------------------------------------
 
+# ----------------------- TO GENERATE ONLY ALLURE REPORTS -----------------------
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):
     outcome = yield
@@ -62,8 +91,12 @@ def pytest_runtest_makereport(item, call):
                 
                 driver_fixture = item.funcargs['request']
                 driver_fixture.cls.driver.save_screenshot(screenshot_path)
+                allure.attach(driver_fixture.cls.driver.get_screenshot_as_png(),
+                              name='screenshot',
+                              attachment_type=allure.attachment_type.PNG)
                 
                 # only add additional html on failure
                 # extras.append(pytest_html.extras.html('<div style="background:orange">Additional HTML</div>'))
                 extras.append(pytest_html.extras.image(screenshot_path))
         report.extra = extras
+# --------------------------------------------------------------------------------
